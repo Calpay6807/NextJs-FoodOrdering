@@ -7,3 +7,13 @@
     text-wrap: balance;
   }
 }
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+.btn-primary {
+  @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer
+  hover:opacity-80 transition-all;
+}
