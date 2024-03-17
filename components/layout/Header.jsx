@@ -3,8 +3,8 @@ import Logo from "../ui/Logo";
 import { FaUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import OutsideClickHandler from "react-outside-click-handler";
-import Title from "../ui/Title";
+import Search from "../ui/Search";
+
 const Header = () => {
   const [isSerachModal, setİsSearchModa] = useState(false);
   return (
@@ -46,13 +46,7 @@ const Header = () => {
           <button className="btn-primary">Order Online</button>
         </div>
       </div>
-      {isSerachModal && (
-        <OutsideClickHandler onOutsideClick={() => setİsSearchModa(false)}>
-          <div>
-            <Title addClass="text-9xl">Search</Title>
-          </div>
-        </OutsideClickHandler>
-      )}
+      {isSerachModal && <Search setİsSearchModa={setİsSearchModa} />}
     </div>
   );
 };
