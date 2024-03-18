@@ -6,18 +6,26 @@ import { FaSearch } from "react-icons/fa";
 import Search from "../ui/Search";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-
+import { useRouter } from "next/router";
 const Header = () => {
   const [isSerachModal, setİsSearchModa] = useState(false);
   const [isMenuModal, setİsMenuModa] = useState(false);
+
+  const router = useRouter();
+
+  console.log(router.asPath);
   return (
-    <div className="h-[5.5rem]  bg-secondary ">
+    <div
+      className={`h-[5.5rem] z-50 relative ${
+        router.asPath === "/" ? "bg-transparent" : "bg-secondary"
+      }`}
+    >
       <div className="container mx-auto text-white flex justify-between items-center h-full">
         <div>
           <Logo />
         </div>
         <nav
-          className={`sm:static absolute top-0 left-0 sm:flex hidden  sm:w-auto sm:h-auto w-full h-full sm:text-white text-black sm:bg-transparent bg-white ${
+          className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden  ${
             isMenuModal === true && "!grid place-content-center"
           }`}
         >
@@ -53,7 +61,10 @@ const Header = () => {
           <a href="" className="md:inline-block hidden">
             <button className="btn-primary">Order Online</button>
           </a>
-          <button onClick={() => setİsMenuModa(true)}>
+          <button
+            className="sm:flex md:hidden"
+            onClick={() => setİsMenuModa(true)}
+          >
             <GiHamburgerMenu />
           </button>
           {isMenuModal && (
